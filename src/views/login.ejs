@@ -1,0 +1,53 @@
+<%- include('includes/header'); %>
+<%- include('includes/navbar'); %>
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-2"></div>
+		<div class="col-lg-8 mt-3">
+			<h1 class="display-1 text-center">Login</h1>
+			<p class="text-center lead">Sign In or Sign Up</p>
+
+			<div class="row">
+				<div class="col-lg mt-3">
+					<h4>Create an account</h4>
+					<p>If you don't have an account, fill the form to create one:</p>
+					<form action="/login/register" method="POST">
+						<input type="hidden" name="_csrf" value=<%= csrfToken %>>
+						<div class="mb-3">
+						  <label for="inputEmail" class="form-label">Email address</label>
+						  <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+						  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+						</div>
+						<div class="mb-3">
+						  <label for="inputPassword" class="form-label">Password</label>
+						  <input type="password" class="form-control" id="inputPassword">
+						</div>
+						<button type="submit" class="btn btn-primary">Sign Up</button>
+					</form>
+				</div>
+
+				<div class="col-lg mt-3">
+					<h4>Login</h4>
+					<p>If you have an account, login:</p>
+					<form action="/login/login" method="POST">
+						<input type="hidden" name="_csrf" value=<%= csrfToken %>>
+						<div class="mb-3">
+						  <label for="inputEmail" class="form-label">Email address</label>
+						  <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+						  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+						</div>
+						<div class="mb-3">
+						  <label for="inputPassword" class="form-label">Password</label>
+						  <input type="password" class="form-control" id="inputPassword">
+						</div>
+						<button type="submit" class="btn btn-primary">Sign In</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-2"></div>
+	</div>
+</div>
+
+<%- include('includes/footer'); %>

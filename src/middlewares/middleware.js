@@ -8,6 +8,8 @@ module.exports.checkCsrfError = (err, req, res, next) => {
 	if(err && 'EBADCSRFTOKEN' === err.code) {
 		return res.render('404');
 	}
+
+	next();
 };
 
 module.exports.csrfMiddleware = (req, res, next) => {
