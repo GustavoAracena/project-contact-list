@@ -1,19 +1,32 @@
 <%- include('includes/header'); %>
+<%- include('includes/navbar'); %>
 
-<section class="container">
-	<h1> <%= csrfToken %>
-		<% if(typeof title !== 'undefined') { %>
-			<%= title%><br>
-			<%- title%>
-		<% } else { %>
-			There is no title
-		<% } %>
-	</h1>
-	<form action="/" method="POST">
-		<input type="hidden" name="_csrf" value="<%= csrfToken %>">
-		Name: <input type="text" name="name">
-		<button>Submit</button>
-	</form>
-</section>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-2"></div>
+		<div class="col-lg-8 mt-3">
+			<h1 class="display-1 text-center">Contact List</h1>
+			<p class="text-center lead">Add your contacts</p>
+
+			<div class="row">
+				<div class="col mt-2">
+					<div class="alert alert-danger">Error</div>
+				</div>
+			</div>
+
+			<div class="responsive-table">
+				<table class="table mt-2">
+					<tr>
+						<td>Name</td>
+						<td>LastName</td>
+						<td>Phone</td>
+						<td>Email</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="col-lg-2"></div>
+	</div>
+</div>
 
 <%- include('includes/footer'); %>
