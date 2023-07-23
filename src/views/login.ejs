@@ -8,20 +8,22 @@
 			<h1 class="display-1 text-center">Login</h1>
 			<p class="text-center lead">Sign In or Sign Up</p>
 
+			<%- include('includes/messages'); -%>
+
 			<div class="row">
 				<div class="col-lg mt-3">
 					<h4>Create an account</h4>
-					<p>If you don't have an account, fill the form to create one:</p>
+					<p>If you don't have an account, create one:</p>
 					<form action="/login/register" method="POST">
 						<input type="hidden" name="_csrf" value=<%= csrfToken %>>
 						<div class="mb-3">
 						  <label for="inputEmail" class="form-label">Email address</label>
-						  <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+						  <input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" name="email">
 						  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
 						</div>
 						<div class="mb-3">
 						  <label for="inputPassword" class="form-label">Password</label>
-						  <input type="password" class="form-control" id="inputPassword">
+						  <input type="password" class="form-control" id="inputPassword1" name="password">
 						</div>
 						<button type="submit" class="btn btn-primary">Sign Up</button>
 					</form>
@@ -34,12 +36,12 @@
 						<input type="hidden" name="_csrf" value=<%= csrfToken %>>
 						<div class="mb-3">
 						  <label for="inputEmail" class="form-label">Email address</label>
-						  <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp">
+						  <input type="email" class="form-control" id="inputEmail2" aria-describedby="emailHelp" name="email">
 						  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
 						</div>
 						<div class="mb-3">
 						  <label for="inputPassword" class="form-label">Password</label>
-						  <input type="password" class="form-control" id="inputPassword">
+						  <input type="password" class="form-control" id="inputPassword2" name="password">
 						</div>
 						<button type="submit" class="btn btn-primary">Sign In</button>
 					</form>
