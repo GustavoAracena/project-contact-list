@@ -1,3 +1,4 @@
+const { async } = require('regenerator-runtime');
 const Contact = require('../models/ContactModel');
 
 exports.index = (req, res) => {
@@ -34,10 +35,15 @@ exports.register = async (req, res) => {
 };
 
 exports.editIndex = async function(req,res) {
-    if(!req.params.id) return res.render('404');
-    const contact = await Contact.idSearch(req.params.id);
-    if(!contact) return res.render('404');
-    res.render('contact', { contact });
+    try {
+        if(!req.params.id) return res.render('404');
+        const contact = await Contact.idSearch(req.params.id);
+        if(!contact) return res.render('404');
+        res.render('contact', { contact });
+    } catch(e) {
+        console.log(e);
+        return res.render('404');
+    }
 };
 
 exports.edit = async function(req,res) {
@@ -56,6 +62,21 @@ exports.edit = async function(req,res) {
         req.flash('success', 'Contact edited successfully.');
         req.session.save(function() {
             return res.redirect(`/contact/index/${contact.contact._id}`);
+        });
+    } catch(e) {
+        console.log(e);
+        return res.render('404');
+    }
+};
+
+exports.delete = async function(req,res) {
+    try {
+        if(!req.params.id) return res.render('404');
+        const contact = await Contact.delete(req.params.id);
+        if(!contact) return res.render('404');
+        req.flash('success', 'Contact deleted successfully.');
+        req.session.save(function() {
+            return res.redirect('/');
         });
     } catch(e) {
         console.log(e);

@@ -18,11 +18,27 @@ function Contact(body) {
 	this.contact = null;
 }
 
+// Static methods
+
 Contact.idSearch = async function(id) {
 	if(typeof id !== 'string')	return;
-	const user = await ContactModel.findById(id);
-	return user;
+	const contact = await ContactModel.findById(id);
+	return contact;
 };
+
+Contact.contactsSearch = async function() {
+	const contact = await ContactModel.find()
+		.sort({ createdAt: -1 });
+	return contact;
+};
+
+Contact.delete = async function(id) {
+	if(typeof id !== 'string')	return;
+	const contact = await ContactModel.findOneAndDelete({_id: id});
+	return contact;
+};
+
+// Methods
 
 Contact.prototype.register = async function() {
 	this.isValid();

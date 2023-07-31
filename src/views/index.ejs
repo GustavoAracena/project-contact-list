@@ -17,7 +17,20 @@
 						<td>LastName</td>
 						<td>Phone</td>
 						<td>Email</td>
+						<td>Edit</td>
+						<td>Exclude</td>
 					</tr>
+
+					<% contacts.forEach(contact => { %>
+						<tr>
+							<td><%= contact.name %></td>
+							<td><%= contact.lastName %></td>
+							<td><%= contact.telephone %></td>
+							<td><%= contact.email %></td>
+							<td><a href="/contact/index/<%= contact._id %>">Edit</a></td>
+							<td><a class="text-danger" href="/contact/delete/<%= contact._id %>">Exclude</a></td>
+						</tr>
+					<% }); %>
 				</table>
 			</div>
 		</div>
