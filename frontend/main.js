@@ -3,4 +3,10 @@ import 'regenerator-runtime/runtime';
 
 import './assets/css/style.css';
 
-console.log('Hello World');
+import Login from './modules/Login';
+
+const login = new Login('.form-login');
+const create = new Login('.form-create');
+
+login.init();
+create.init();

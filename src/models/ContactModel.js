@@ -27,9 +27,9 @@ Contact.idSearch = async function(id) {
 };
 
 Contact.contactsSearch = async function() {
-	const contact = await ContactModel.find()
+	const contacts = await ContactModel.find()
 		.sort({ createdAt: -1 });
-	return contact;
+	return contacts;
 };
 
 Contact.delete = async function(id) {

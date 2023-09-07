@@ -1,9 +1,13 @@
 const session = require('express-session');
 const Login = require('../models/LoginModel')
+const Contact = require('../models/ContactModel')
 
-exports.index = (req, res) => {
-    console.log(req.session.user);
-    if(req.session.user) return res.render('index');
+exports.index = async (req, res) => {
+    // console.log(req.session.user);
+    if(req.session.user) {
+        const contacts = await Contact.contactsSearch();
+        return res.render('index', { contacts });
+    }
     res.render('login');
 };
 
